@@ -1,10 +1,11 @@
 var http = require('http');
-var path = require('path');
-
+var api = require("./api/quienSoy.js");
 var server = http.createServer(function(req,res){
-  if (req.url == "/"){
-    console.log(req.headers);
-  }
+  res.writeHead(
+    200, 
+    {"content-type": "application/json"}
+  );
+  api(req,res);
 });
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
